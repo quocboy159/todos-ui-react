@@ -3,7 +3,7 @@ import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom";
-import Loader from "../Loader";
+import Loader from "../commons/Loader";
 
 const UserList = () => {
     const { users, isLoadingUsers } = useSelector((state) => state.usersReducer)
@@ -14,9 +14,9 @@ const UserList = () => {
                 : (
                     users.map((item) => {
                         return (
-                            <Row >
-                                <Col lg={8} md={10} sm={12}>
-                                    <Link to={`/${item.id}`}>
+                            <Row key={item._id} >
+                                <Col md={12}>
+                                    <Link to={`/users/${item._id}`}>
                                         <Card>
                                             <Card.Body>
                                                 <Card.Title>{item.name}</Card.Title>
